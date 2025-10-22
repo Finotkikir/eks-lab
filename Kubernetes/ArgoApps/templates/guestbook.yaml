@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Finotkikir/eks-lab.git
-    path: Kubernetes/charts/guestbook
+    path: Kubernetes/charts
     targetRevision: main
   destination:
     server: https://kubernetes.default.svc
