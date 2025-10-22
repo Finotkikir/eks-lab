@@ -1,0 +1,31 @@
+kube-prometheus-stack:
+  grafana:
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      hosts:
+        - grafana.fbi.com
+      annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /
+        nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      path: /
+      pathType: Prefix
+
+  prometheus:
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      hosts:
+        - prometheus.fbi.com
+      annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /
+        nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      paths:
+        - /
+      pathType: Prefix
+
+    prometheusSpec:
+      serviceMonitorNamespaceSelector:
+        matchLabels: {}
+      serviceMonitorSelector:
+        matchLabels: {}

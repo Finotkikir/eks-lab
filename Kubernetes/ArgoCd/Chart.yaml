@@ -1,0 +1,12 @@
+apiVersion: v2
+name: argocd
+description: ArgoCD in the shared cluster to manage applications in all other clusters.
+type: application
+version: 8.0.10
+dependencies:
+  - name: argo-cd
+    repository: https://argoproj.github.io/argo-helm
+    version: 8.6.4
+  - name: argocd-image-updater
+    repository: https://argoproj.github.io/argo-helm
+    version: 0.12.1

@@ -1,0 +1,16 @@
+FROM golang:1.25 AS builder
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+COPY *.go ./
+RUN CGO_ENABLED=0 GOOS=linux go build -o /guestbook
+
+# Run the tests in the container
+FROM scratch
+
+WORKDIR /
+
+COPY --from=builder /guestbook ./
+COPY  ./public ./public
+EXPOSE 3000
+ENTRYPOINT ["/guestbook"]
