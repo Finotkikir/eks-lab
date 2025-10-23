@@ -14,5 +14,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: default
   syncPolicy:
+    syncOptions:
+    - ServerSideApply=true
     automated:
       selfHeal: true
