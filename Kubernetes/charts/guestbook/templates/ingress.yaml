@@ -6,7 +6,7 @@ metadata:
   labels:
     {{- include "guestbook.labels" . | nindent 4 }}
 spec:
-  ingressClassName: nginx
+  ingressClassName: traefik
   rules:
     - host: guestbook.fbi.com
       http:
